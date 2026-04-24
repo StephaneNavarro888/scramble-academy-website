@@ -51,12 +51,16 @@
     #mobile-menu.open{display:flex}
     .mobile-link{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.08em;color:var(--c-text);text-decoration:none;transition:color .2s}
     .mobile-link:hover{color:var(--c-accent)}
-    @media(max-width:768px){.nav-desktop{display:none}#mobile-btn{display:flex}}
+    .nav-desktop{display:flex;align-items:center}
+    @media(max-width:768px){.nav-desktop{display:none!important}#mobile-btn{display:flex}}
     .lang-switch{display:flex;align-items:center;gap:.1rem;margin-left:1.75rem;border:1px solid var(--c-border);padding:.25rem .3rem}
     .lang-btn{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--c-muted);background:none;border:none;cursor:pointer;padding:.2rem .45rem;transition:color .2s,background .2s;text-transform:uppercase;line-height:1}
     .lang-btn:hover{color:var(--c-text)}
     .lang-btn.active{color:var(--c-text);background:var(--c-elevated)}
     .lang-sep{font-size:.5rem;color:var(--c-border);pointer-events:none}
+    /* Mobile inline lang switch (next to hamburger) */
+    .lang-switch-inav{display:none;margin-left:0;margin-right:.75rem}
+    @media(max-width:768px){.lang-switch-inav{display:flex}}
 
     /* HERO */
     #hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden}
@@ -93,6 +97,20 @@
     .sec-label{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-accent);margin-bottom:.75rem}
     .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:.88;letter-spacing:-.01em;color:var(--c-text);margin-bottom:3rem}
     .red-line{width:36px;height:2px;background:var(--c-accent);margin:1.25rem 0 2rem}
+
+    /* Mobile: center section headings */
+    @media(max-width:768px){
+      .sec-label{text-align:center}
+      .sec-title{text-align:center}
+      .red-line{margin-left:auto;margin-right:auto}
+    }
+    @media(max-width:900px){
+      .about-copy .sec-label{text-align:center}
+      .about-name{text-align:center}
+      .about-copy .red-line{margin-left:auto;margin-right:auto}
+      .about-bio{max-width:none;text-align:center}
+      .cred-list li{justify-content:center}
+    }
 
     /* PROGRAMS */
     #programs{padding:8rem 2.5rem;max-width:1400px;margin:0 auto}
@@ -213,17 +231,23 @@
   <a href="#hero" style="text-decoration:none">
     <img src="https://static.wixstatic.com/media/f53ea4_966f0bd1d94341e1bf34bdd3e49cd89b~mv2.png" class="nav-logo" alt="Scramble Academy Spain">
   </a>
-  <div class="nav-desktop" style="display:flex;align-items:center">
+  <div class="nav-desktop">
     <a href="#programs" class="nav-link" data-i18n="nav.programs">Programs</a>
     <a href="#schedule" class="nav-link" data-i18n="nav.schedule">Schedule</a>
     <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
     <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
     <a href="#contact" class="nav-cta" data-i18n="nav.cta">Join Now</a>
     <div class="lang-switch" aria-label="Language">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn lbtn-en active" onclick="setLang('en')">EN</button>
       <span class="lang-sep">|</span>
-      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn lbtn-es" onclick="setLang('es')">ES</button>
     </div>
+  </div>
+  <!-- Lang switch visible on mobile nav bar -->
+  <div class="lang-switch lang-switch-inav" aria-label="Language">
+    <button class="lang-btn lbtn-en active" onclick="setLang('en')">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn lbtn-es" onclick="setLang('es')">ES</button>
   </div>
   <button id="mobile-btn" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -239,9 +263,9 @@
   <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
   <a href="#contact" class="mobile-link" style="color:var(--c-accent)" data-i18n="nav.cta">Join Now</a>
   <div class="lang-switch" style="margin:0">
-    <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+    <button class="lang-btn lbtn-en active" onclick="setLang('en')">EN</button>
     <span class="lang-sep">|</span>
-    <button class="lang-btn" id="btn-es-m" onclick="setLang('es')">ES</button>
+    <button class="lang-btn lbtn-es" onclick="setLang('es')">ES</button>
   </div>
 </div>
 
@@ -698,10 +722,8 @@
       const v = T[lang][el.dataset.i18n];
       if (v !== undefined) el.innerHTML = v;
     });
-    ['btn-en','btn-es','btn-en-m','btn-es-m'].forEach(id => {
-      const btn = document.getElementById(id);
-      if (btn) btn.classList.toggle('active', id.includes(lang));
-    });
+    document.querySelectorAll('.lbtn-en').forEach(btn => btn.classList.toggle('active', lang === 'en'));
+    document.querySelectorAll('.lbtn-es').forEach(btn => btn.classList.toggle('active', lang === 'es'));
     document.title = lang === 'es'
       ? 'Scramble Academy Spain — Jiu-Jitsu & Grappling | Torremolinos'
       : 'Scramble Academy Spain — Jiu-Jitsu & Grappling | Torremolinos';
