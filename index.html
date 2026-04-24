@@ -52,6 +52,11 @@
     .mobile-link{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.08em;color:var(--c-text);text-decoration:none;transition:color .2s}
     .mobile-link:hover{color:var(--c-accent)}
     @media(max-width:768px){.nav-desktop{display:none}#mobile-btn{display:flex}}
+    .lang-switch{display:flex;align-items:center;gap:.1rem;margin-left:1.75rem;border:1px solid var(--c-border);padding:.25rem .3rem}
+    .lang-btn{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--c-muted);background:none;border:none;cursor:pointer;padding:.2rem .45rem;transition:color .2s,background .2s;text-transform:uppercase;line-height:1}
+    .lang-btn:hover{color:var(--c-text)}
+    .lang-btn.active{color:var(--c-text);background:var(--c-elevated)}
+    .lang-sep{font-size:.5rem;color:var(--c-border);pointer-events:none}
 
     /* HERO */
     #hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden}
@@ -209,11 +214,16 @@
     <img src="https://static.wixstatic.com/media/f53ea4_966f0bd1d94341e1bf34bdd3e49cd89b~mv2.png" class="nav-logo" alt="Scramble Academy Spain">
   </a>
   <div class="nav-desktop" style="display:flex;align-items:center">
-    <a href="#programs" class="nav-link">Programs</a>
-    <a href="#schedule" class="nav-link">Schedule</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <a href="#contact" class="nav-cta">Join Now</a>
+    <a href="#programs" class="nav-link" data-i18n="nav.programs">Programs</a>
+    <a href="#schedule" class="nav-link" data-i18n="nav.schedule">Schedule</a>
+    <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+    <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Join Now</a>
+    <div class="lang-switch" aria-label="Language">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
   </div>
   <button id="mobile-btn" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -223,11 +233,16 @@
 <!-- MOBILE MENU -->
 <div id="mobile-menu">
   <button id="mobile-close" aria-label="Close" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--c-text);font-size:2rem;cursor:pointer;line-height:1">×</button>
-  <a href="#programs" class="mobile-link">Programs</a>
-  <a href="#schedule" class="mobile-link">Schedule</a>
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#contact" class="mobile-link" style="color:var(--c-accent)">Join Now</a>
+  <a href="#programs" class="mobile-link" data-i18n="nav.programs">Programs</a>
+  <a href="#schedule" class="mobile-link" data-i18n="nav.schedule">Schedule</a>
+  <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
+  <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
+  <a href="#contact" class="mobile-link" style="color:var(--c-accent)" data-i18n="nav.cta">Join Now</a>
+  <div class="lang-switch" style="margin:0">
+    <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" id="btn-es-m" onclick="setLang('es')">ES</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -235,16 +250,16 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-label" id="hl">Torremolinos · Costa del Sol · Spain</p>
-    <h1 class="hero-title" id="ht">FORGE<br>YOUR<br>GAME</h1>
-    <p class="hero-sub" id="hs">World-class Brazilian Jiu-Jitsu and grappling on the Costa del Sol. Train under ADCC veteran Santeri Lilius — where elite athletes and beginners forge their game together.</p>
+    <p class="hero-label" id="hl" data-i18n="hero.label">Torremolinos · Costa del Sol · Spain</p>
+    <h1 class="hero-title" id="ht" data-i18n="hero.title">FORGE<br>YOUR<br>GAME</h1>
+    <p class="hero-sub" id="hs" data-i18n="hero.sub">World-class Brazilian Jiu-Jitsu and grappling on the Costa del Sol. Train under ADCC veteran Santeri Lilius — where elite athletes and beginners forge their game together.</p>
     <div class="hero-actions" id="ha">
-      <a href="#schedule" class="btn-primary">View Schedule</a>
-      <a href="#contact" class="btn-outline">Join Now</a>
+      <a href="#schedule" class="btn-primary" data-i18n="hero.cta1">View Schedule</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.cta2">Join Now</a>
     </div>
   </div>
   <div class="scroll-ind" id="si">
-    <span>Scroll</span>
+    <span data-i18n="hero.scroll">Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
@@ -259,33 +274,33 @@
 
 <!-- PROGRAMS -->
 <section id="programs">
-  <p class="sec-label">001 / Programs</p>
-  <h2 class="sec-title">TRAIN EVERY<br>DISCIPLINE</h2>
+  <p class="sec-label" data-i18n="prog.label">001 / Programs</p>
+  <h2 class="sec-title" data-i18n="prog.title">TRAIN EVERY<br>DISCIPLINE</h2>
   <div class="programs-grid">
     <div class="prog-card">
       <div class="prog-num">01</div>
-      <div class="prog-name">BRAZILIAN<br>JIU-JITSU</div>
-      <p class="prog-desc">Gi and no-gi technique from foundation to competition. Structured classes for all levels, beginner to advanced.</p>
+      <div class="prog-name" data-i18n="prog.1.name">BRAZILIAN<br>JIU-JITSU</div>
+      <p class="prog-desc" data-i18n="prog.1.desc">Gi and no-gi technique from foundation to competition. Structured classes for all levels, beginner to advanced.</p>
     </div>
     <div class="prog-card">
       <div class="prog-num">02</div>
-      <div class="prog-name">NOGI<br>GRAPPLING</div>
-      <p class="prog-desc">Submission wrestling without the gi. Competition-focused training built on ADCC and EBI rulesets. Beginners course included.</p>
+      <div class="prog-name" data-i18n="prog.2.name">NOGI<br>GRAPPLING</div>
+      <p class="prog-desc" data-i18n="prog.2.desc">Submission wrestling without the gi. Competition-focused training built on ADCC and EBI rulesets. Beginners course included.</p>
     </div>
     <div class="prog-card">
       <div class="prog-num">03</div>
-      <div class="prog-name">MIXED<br>MARTIAL ARTS</div>
-      <p class="prog-desc">Striking integrated with takedowns and ground control. Dedicated beginners course to build solid MMA foundations.</p>
+      <div class="prog-name" data-i18n="prog.3.name">MIXED<br>MARTIAL ARTS</div>
+      <p class="prog-desc" data-i18n="prog.3.desc">Striking integrated with takedowns and ground control. Dedicated beginners course to build solid MMA foundations.</p>
     </div>
     <div class="prog-card">
       <div class="prog-num">04</div>
-      <div class="prog-name">WRESTLING</div>
-      <p class="prog-desc">Takedowns, ties, and top-game development. Saturday morning sessions focused on competitive wrestling fundamentals.</p>
+      <div class="prog-name" data-i18n="prog.4.name">WRESTLING</div>
+      <p class="prog-desc" data-i18n="prog.4.desc">Takedowns, ties, and top-game development. Saturday morning sessions focused on competitive wrestling fundamentals.</p>
     </div>
     <div class="prog-card">
       <div class="prog-num">05</div>
-      <div class="prog-name">KIDS<br>PROGRAMS</div>
-      <p class="prog-desc">Three age-specific classes: First Steps (3–6), Basic (7–9), Advanced (10–15). Confidence, discipline, self-defence.</p>
+      <div class="prog-name" data-i18n="prog.5.name">KIDS<br>PROGRAMS</div>
+      <p class="prog-desc" data-i18n="prog.5.desc">Three age-specific classes: First Steps (3–6), Basic (7–9), Advanced (10–15). Confidence, discipline, self-defence.</p>
     </div>
   </div>
 </section>
@@ -302,16 +317,16 @@
       <img src="https://static.wixstatic.com/media/f53ea4_26f11b562a35410c8188f033edda3983~mv2.jpg" alt="Santeri Lilius — Head Instructor" loading="lazy">
     </div>
     <div class="about-copy">
-      <p class="sec-label" id="about-lbl">002 / Instructor</p>
+      <p class="sec-label" id="about-lbl" data-i18n="about.label">002 / Instructor</p>
       <h2 class="about-name" id="about-name">SANTERI<br>LILIUS</h2>
       <div class="red-line" id="about-line"></div>
-      <p class="about-bio" id="about-bio">Scramble Academy Spain is built around Finnish grappling champion Santeri Lilius — one of Europe's most decorated submission wrestlers. After competing internationally at the highest level, Santeri established his academy on the Costa del Sol with one goal: to build complete, competitive grapplers in a world-class environment.</p>
+      <p class="about-bio" id="about-bio" data-i18n="about.bio">Scramble Academy Spain is built around Finnish grappling champion Santeri Lilius — one of Europe's most decorated submission wrestlers. After competing internationally at the highest level, Santeri established his academy on the Costa del Sol with one goal: to build complete, competitive grapplers in a world-class environment.</p>
       <ul class="cred-list">
-        <li>ADCC European Trials Winner<span class="cred-badge">×2</span></li>
-        <li>ADCC Veteran — International competitor</li>
-        <li>IBJJF NoGi European Champion<span class="cred-badge">×1</span></li>
-        <li>IBJJF Worlds Medalist</li>
-        <li>Scramble Brand Partner — Torremolinos, Spain</li>
+        <li data-i18n="about.cred1">ADCC European Trials Winner<span class="cred-badge">×2</span></li>
+        <li data-i18n="about.cred2">ADCC Veteran — International competitor</li>
+        <li data-i18n="about.cred3">IBJJF NoGi European Champion<span class="cred-badge">×1</span></li>
+        <li data-i18n="about.cred4">IBJJF Worlds Medalist</li>
+        <li data-i18n="about.cred5">Scramble Brand Partner — Torremolinos, Spain</li>
       </ul>
     </div>
   </div>
@@ -323,29 +338,29 @@
   <div class="stats-inner">
     <div class="stat-item">
       <div class="stat-num" data-target="2" data-suffix="×">2×</div>
-      <div class="stat-lbl">ADCC European<br>Trials Winner</div>
+      <div class="stat-lbl" data-i18n="stats.lbl1">ADCC European<br>Trials Winner</div>
     </div>
     <div class="stat-item">
       <div class="stat-num" data-target="1" data-suffix="×">1×</div>
-      <div class="stat-lbl">IBJJF NoGi<br>European Champion</div>
+      <div class="stat-lbl" data-i18n="stats.lbl2">IBJJF NoGi<br>European Champion</div>
     </div>
     <div class="stat-item">
       <div class="stat-num" data-target="3" data-suffix="+">3+</div>
-      <div class="stat-lbl">IBJJF Worlds<br>Medals</div>
+      <div class="stat-lbl" data-i18n="stats.lbl3">IBJJF Worlds<br>Medals</div>
     </div>
   </div>
 </section>
 
 <!-- SCHEDULE -->
 <section id="schedule">
-  <p class="sec-label">003 / Timetable</p>
-  <h2 class="sec-title">2025 CLASS<br>SCHEDULE</h2>
+  <p class="sec-label" data-i18n="sched.label">003 / Timetable</p>
+  <h2 class="sec-title" data-i18n="sched.title">2025 CLASS<br>SCHEDULE</h2>
   <div class="sched-scroll">
     <table class="sched-table">
       <thead>
         <tr>
-          <th class="th-time">Time</th>
-          <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+          <th class="th-time" data-i18n="sched.time">Time</th>
+          <th data-i18n="day.mon">Mon</th><th data-i18n="day.tue">Tue</th><th data-i18n="day.wed">Wed</th><th data-i18n="day.thu">Thu</th><th data-i18n="day.fri">Fri</th><th data-i18n="day.sat">Sat</th>
         </tr>
       </thead>
       <tbody>
@@ -353,43 +368,43 @@
           <td class="td-time">10:00 – 12:00</td>
           <td><span class="badge b-nogi">NoGi</span></td>
           <td><span class="badge b-bjj">Jiu-Jitsu</span></td>
-          <td><span class="badge b-nogi">NoGi<small>Competition Class</small></span></td>
+          <td><span class="badge b-nogi">NoGi<small data-i18n="cls.compclass">Competition Class</small></span></td>
           <td><span class="badge b-bjj">Jiu-Jitsu</span></td>
           <td><span class="badge b-nogi">NoGi</span></td>
-          <td><span class="badge b-wrestling">Wrestling<small>10:00 – 11:00</small></span><span class="badge b-openmat">Open Mat<small>11:00 – 12:00</small></span></td>
+          <td><span class="badge b-wrestling">Wrestling<small>10:00 – 11:00</small></span><span class="badge b-openmat" data-i18n="cls.openmat">Open Mat<small>11:00 – 12:00</small></span></td>
         </tr>
         <tr>
           <td class="td-time">16:15 – 17:00</td>
           <td class="td-empty"></td><td class="td-empty"></td>
-          <td><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidssteps">Kids First Steps<small data-i18n="cls.age36">3–6 years old</small></span></td>
           <td class="td-empty"></td>
-          <td><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidssteps">Kids First Steps<small data-i18n="cls.age36">3–6 years old</small></span></td>
           <td class="td-empty"></td>
         </tr>
         <tr>
           <td class="td-time">17:00 – 18:00</td>
           <td class="td-empty"></td><td class="td-empty"></td>
-          <td><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidsbasic">Kids Basic<small data-i18n="cls.age79">7–9 years old</small></span></td>
           <td class="td-empty"></td>
-          <td><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidsbasic">Kids Basic<small data-i18n="cls.age79">7–9 years old</small></span></td>
           <td class="td-empty"></td>
         </tr>
         <tr>
           <td class="td-time">18:00 – 19:00</td>
-          <td><span class="badge b-kids">NoGi Kids<small>10–15 years old</small></span></td>
-          <td><span class="badge b-mma">MMA Beginners</span></td>
-          <td><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></td>
-          <td><span class="badge b-mma">MMA Beginners</span></td>
-          <td><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></td>
+          <td><span class="badge b-kids" data-i18n="cls.nogikids">NoGi Kids<small data-i18n="cls.age1015">10–15 years old</small></span></td>
+          <td><span class="badge b-mma" data-i18n="cls.mmabeg">MMA Beginners</span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidsadv">BJJ Kids Advanced<small data-i18n="cls.age1015">10–15 years old</small></span></td>
+          <td><span class="badge b-mma" data-i18n="cls.mmabeg">MMA Beginners</span></td>
+          <td><span class="badge b-kids" data-i18n="cls.kidsadv">BJJ Kids Advanced<small data-i18n="cls.age1015">10–15 years old</small></span></td>
           <td class="td-empty"></td>
         </tr>
         <tr>
           <td class="td-time">19:00 – 20:00</td>
-          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></td>
-          <td><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></td>
-          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></td>
-          <td><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></td>
-          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></td>
+          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></td>
+          <td><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65" data-i18n="cls.nogibeg">NoGi Beginners</span></td>
+          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></td>
+          <td><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65" data-i18n="cls.nogibeg">NoGi Beginners</span></td>
+          <td><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></td>
           <td class="td-empty"></td>
         </tr>
         <tr>
@@ -407,66 +422,66 @@
   <!-- MOBILE SCHEDULE: day-tab view -->
   <div class="mobile-sched">
     <div class="day-tabs" role="tablist">
-      <button class="day-tab active" data-day="mon" role="tab">Mon</button>
-      <button class="day-tab" data-day="tue" role="tab">Tue</button>
-      <button class="day-tab" data-day="wed" role="tab">Wed</button>
-      <button class="day-tab" data-day="thu" role="tab">Thu</button>
-      <button class="day-tab" data-day="fri" role="tab">Fri</button>
-      <button class="day-tab" data-day="sat" role="tab">Sat</button>
+      <button class="day-tab active" data-day="mon" role="tab" data-i18n="day.mon">Mon</button>
+      <button class="day-tab" data-day="tue" role="tab" data-i18n="day.tue">Tue</button>
+      <button class="day-tab" data-day="wed" role="tab" data-i18n="day.wed">Wed</button>
+      <button class="day-tab" data-day="thu" role="tab" data-i18n="day.thu">Thu</button>
+      <button class="day-tab" data-day="fri" role="tab" data-i18n="day.fri">Fri</button>
+      <button class="day-tab" data-day="sat" role="tab" data-i18n="day.sat">Sat</button>
     </div>
     <!-- MON -->
     <div class="day-panel active" id="dp-mon">
       <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
-      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">NoGi Kids<small>10–15 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.nogikids">NoGi Kids<small data-i18n="cls.age1015">10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></div></div>
       <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
     </div>
     <!-- TUE -->
     <div class="day-panel" id="dp-tue">
       <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
-      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma">MMA Beginners</span></div></div>
-      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma" data-i18n="cls.mmabeg">MMA Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65" data-i18n="cls.nogibeg">NoGi Beginners</span></div></div>
       <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
     </div>
     <!-- WED -->
     <div class="day-panel" id="dp-wed">
       <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi<small>Competition Class</small></span></div></div>
-      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidssteps">Kids First Steps<small data-i18n="cls.age36">3–6 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidsbasic">Kids Basic<small data-i18n="cls.age79">7–9 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidsadv">BJJ Kids Advanced<small data-i18n="cls.age1015">10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></div></div>
       <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
     </div>
     <!-- THU -->
     <div class="day-panel" id="dp-thu">
       <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
-      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma">MMA Beginners</span></div></div>
-      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma" data-i18n="cls.mmabeg">MMA Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65" data-i18n="cls.nogibeg">NoGi Beginners</span></div></div>
       <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
     </div>
     <!-- FRI -->
     <div class="day-panel" id="dp-fri">
       <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
-      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></div></div>
-      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidssteps">Kids First Steps<small data-i18n="cls.age36">3–6 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidsbasic">Kids Basic<small data-i18n="cls.age79">7–9 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids" data-i18n="cls.kidsadv">BJJ Kids Advanced<small data-i18n="cls.age1015">10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj" data-i18n="cls.bjjbeg">BJJ Beginners</span></div></div>
       <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
     </div>
     <!-- SAT -->
     <div class="day-panel" id="dp-sat">
       <div class="class-row"><div class="class-time">10:00 – 11:00</div><div class="class-badges"><span class="badge b-wrestling">Wrestling</span></div></div>
-      <div class="class-row"><div class="class-time">11:00 – 12:00</div><div class="class-badges"><span class="badge b-openmat">Open Mat</span></div></div>
+      <div class="class-row"><div class="class-time">11:00 – 12:00</div><div class="class-badges"><span class="badge b-openmat" data-i18n="cls.openmat">Open Mat</span></div></div>
     </div>
   </div>
 
   <div class="sched-legend">
-    <div class="leg-item"><div class="leg-dot" style="background:rgba(245,240,232,.5)"></div>Jiu-Jitsu</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--c-accent)"></div>NoGi</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#475569"></div>MMA</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#10b981"></div>Kids</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#f59e0b"></div>Wrestling</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#8b5cf6"></div>Open Mat</div>
+    <div class="leg-item"><div class="leg-dot" style="background:rgba(245,240,232,.5)"></div><span data-i18n="leg.bjj">Jiu-Jitsu</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--c-accent)"></div><span>NoGi</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#475569"></div><span>MMA</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#10b981"></div><span data-i18n="leg.kids">Kids</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#f59e0b"></div><span>Wrestling</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#8b5cf6"></div><span data-i18n="leg.openmat">Open Mat</span></div>
   </div>
 </section>
 
@@ -474,8 +489,8 @@
 <section id="contact">
   <div class="contact-grid">
     <div class="contact-copy">
-      <p class="sec-label">004 / Contact</p>
-      <h2 class="sec-title">COME<br>TRAIN<br>WITH US</h2>
+      <p class="sec-label" data-i18n="contact.label">004 / Contact</p>
+      <h2 class="sec-title" data-i18n="contact.title">COME<br>TRAIN<br>WITH US</h2>
       <div class="red-line"></div>
       <div class="contact-detail">
         <svg class="c-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
@@ -512,12 +527,12 @@
 <footer>
   <img src="https://static.wixstatic.com/media/f53ea4_966f0bd1d94341e1bf34bdd3e49cd89b~mv2.png" class="foot-logo" alt="Scramble Academy Spain">
   <nav class="foot-nav">
-    <a href="#programs">Programs</a>
-    <a href="#about">About</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#contact">Contact</a>
+    <a href="#programs" data-i18n="nav.programs">Programs</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#schedule" data-i18n="nav.schedule">Schedule</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
-  <p class="foot-copy">© 2025 Scramble Academy Spain · Torremolinos, Costa del Sol · All rights reserved</p>
+  <p class="foot-copy" data-i18n="footer.copy">© 2025 Scramble Academy Spain · Torremolinos, Costa del Sol · All rights reserved</p>
 </footer>
 
 <script>
@@ -608,6 +623,94 @@
     scrollTrigger: { trigger: '.sched-scroll', start: 'top 80%', toggleActions: 'play none none none' },
     opacity: 0, x: -18, duration: .5, ease: 'power2.out', stagger: .07
   });
+  // ── TRANSLATIONS ──
+  const T = {
+    en: {
+      'nav.programs':'Programs','nav.schedule':'Schedule','nav.about':'About','nav.contact':'Contact','nav.cta':'Join Now',
+      'hero.label':'Torremolinos · Costa del Sol · Spain',
+      'hero.title':'FORGE<br>YOUR<br>GAME',
+      'hero.sub':'World-class Brazilian Jiu-Jitsu and grappling on the Costa del Sol. Train under ADCC veteran Santeri Lilius — where elite athletes and beginners forge their game together.',
+      'hero.cta1':'View Schedule','hero.cta2':'Join Now','hero.scroll':'Scroll',
+      'prog.label':'001 / Programs','prog.title':'TRAIN EVERY<br>DISCIPLINE',
+      'prog.1.name':'BRAZILIAN<br>JIU-JITSU','prog.1.desc':'Gi and no-gi technique from foundation to competition. Structured classes for all levels, beginner to advanced.',
+      'prog.2.name':'NOGI<br>GRAPPLING','prog.2.desc':'Submission wrestling without the gi. Competition-focused training built on ADCC and EBI rulesets. Beginners course included.',
+      'prog.3.name':'MIXED<br>MARTIAL ARTS','prog.3.desc':'Striking integrated with takedowns and ground control. Dedicated beginners course to build solid MMA foundations.',
+      'prog.4.name':'WRESTLING','prog.4.desc':'Takedowns, ties, and top-game development. Saturday morning sessions focused on competitive wrestling fundamentals.',
+      'prog.5.name':'KIDS<br>PROGRAMS','prog.5.desc':'Three age-specific classes: First Steps (3–6), Basic (7–9), Advanced (10–15). Confidence, discipline, self-defence.',
+      'about.label':'002 / Instructor',
+      'about.bio':'Scramble Academy Spain is built around Finnish grappling champion Santeri Lilius — one of Europe\'s most decorated submission wrestlers. After competing internationally at the highest level, Santeri established his academy on the Costa del Sol with one goal: to build complete, competitive grapplers in a world-class environment.',
+      'about.cred1':'ADCC European Trials Winner<span class="cred-badge">×2</span>',
+      'about.cred2':'ADCC Veteran — International competitor',
+      'about.cred3':'IBJJF NoGi European Champion<span class="cred-badge">×1</span>',
+      'about.cred4':'IBJJF Worlds Medalist',
+      'about.cred5':'Scramble Brand Partner — Torremolinos, Spain',
+      'stats.lbl1':'ADCC European<br>Trials Winner','stats.lbl2':'IBJJF NoGi<br>European Champion','stats.lbl3':'IBJJF Worlds<br>Medals',
+      'sched.label':'003 / Timetable','sched.title':'2025 CLASS<br>SCHEDULE','sched.time':'Time',
+      'day.mon':'Mon','day.tue':'Tue','day.wed':'Wed','day.thu':'Thu','day.fri':'Fri','day.sat':'Sat',
+      'cls.compclass':'Competition Class','cls.openmat':'Open Mat',
+      'cls.kidssteps':'Kids First Steps','cls.age36':'3–6 years old',
+      'cls.kidsbasic':'Kids Basic','cls.age79':'7–9 years old',
+      'cls.nogikids':'NoGi Kids','cls.age1015':'10–15 years old',
+      'cls.kidsadv':'BJJ Kids Advanced','cls.mmabeg':'MMA Beginners',
+      'cls.bjjbeg':'BJJ Beginners','cls.nogibeg':'NoGi Beginners',
+      'leg.bjj':'Jiu-Jitsu','leg.kids':'Kids','leg.openmat':'Open Mat',
+      'contact.label':'004 / Contact','contact.title':'COME<br>TRAIN<br>WITH US',
+      'footer.copy':'© 2025 Scramble Academy Spain · Torremolinos, Costa del Sol · All rights reserved',
+    },
+    es: {
+      'nav.programs':'Programas','nav.schedule':'Horarios','nav.about':'Nosotros','nav.contact':'Contacto','nav.cta':'Únete',
+      'hero.label':'Torremolinos · Costa del Sol · España',
+      'hero.title':'FORJA<br>TU<br>JUEGO',
+      'hero.sub':'Jiu-Jitsu brasileño y grappling de élite en la Costa del Sol. Entrena bajo la dirección del veterano del ADCC Santeri Lilius — donde atletas de élite y principiantes forjan su juego juntos.',
+      'hero.cta1':'Ver Horarios','hero.cta2':'Únete','hero.scroll':'Desliza',
+      'prog.label':'001 / Programas','prog.title':'ENTRENA CADA<br>DISCIPLINA',
+      'prog.1.name':'BRAZILIAN<br>JIU-JITSU','prog.1.desc':'Técnica en gi y no-gi desde los fundamentos hasta la competición. Clases estructuradas para todos los niveles, de principiante a avanzado.',
+      'prog.2.name':'NOGI<br>GRAPPLING','prog.2.desc':'Lucha de sumisión sin gi. Entrenamiento enfocado en competición basado en los reglamentos ADCC y EBI. Curso de iniciación incluido.',
+      'prog.3.name':'ARTES MARCIALES<br>MIXTAS','prog.3.desc':'Golpeo integrado con derribos y control en suelo. Curso de iniciación dedicado para construir bases sólidas en MMA.',
+      'prog.4.name':'LUCHA','prog.4.desc':'Derribos, clinch y desarrollo del juego ofensivo. Sesiones de sábado por la mañana centradas en los fundamentos de la lucha competitiva.',
+      'prog.5.name':'PROGRAMAS<br>INFANTILES','prog.5.desc':'Tres clases por edad: Primeros Pasos (3–6), Básico (7–9), Avanzado (10–15). Confianza, disciplina y autodefensa.',
+      'about.label':'002 / Instructor',
+      'about.bio':'Scramble Academy Spain está liderada por el campeón de grappling finlandés Santeri Lilius — uno de los luchadores de sumisión más laureados de Europa. Tras competir internacionalmente al más alto nivel, Santeri estableció su academia en la Costa del Sol con un único objetivo: formar grapplers completos y competitivos en un entorno de primer nivel mundial.',
+      'about.cred1':'Ganador del Trial Europeo ADCC<span class="cred-badge">×2</span>',
+      'about.cred2':'Veterano ADCC — Competidor internacional',
+      'about.cred3':'Campeón Europeo NoGi IBJJF<span class="cred-badge">×1</span>',
+      'about.cred4':'Medallista en el Mundial IBJJF',
+      'about.cred5':'Partner oficial Scramble Brand — Torremolinos, España',
+      'stats.lbl1':'Ganador Trial<br>Europeo ADCC','stats.lbl2':'Campeón Europeo<br>NoGi IBJJF','stats.lbl3':'Medallas<br>Mundial IBJJF',
+      'sched.label':'003 / Horario','sched.title':'HORARIO DE<br>CLASES 2025','sched.time':'Hora',
+      'day.mon':'Lun','day.tue':'Mar','day.wed':'Mié','day.thu':'Jue','day.fri':'Vie','day.sat':'Sáb',
+      'cls.compclass':'Clase de Competición','cls.openmat':'Rodaje Libre',
+      'cls.kidssteps':'Primeros Pasos','cls.age36':'3–6 años',
+      'cls.kidsbasic':'Básico Niños','cls.age79':'7–9 años',
+      'cls.nogikids':'NoGi Niños','cls.age1015':'10–15 años',
+      'cls.kidsadv':'BJJ Niños Avanzado','cls.mmabeg':'Principiantes MMA',
+      'cls.bjjbeg':'Principiantes BJJ','cls.nogibeg':'Principiantes NoGi',
+      'leg.bjj':'Jiu-Jitsu','leg.kids':'Niños','leg.openmat':'Rodaje Libre',
+      'contact.label':'004 / Contacto','contact.title':'VEN A<br>ENTRENAR<br>CON NOSOTROS',
+      'footer.copy':'© 2025 Scramble Academy Spain · Torremolinos, Costa del Sol · Todos los derechos reservados',
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('sa-lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = T[lang][el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;
+    });
+    ['btn-en','btn-es','btn-en-m','btn-es-m'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('active', id.includes(lang));
+    });
+    document.title = lang === 'es'
+      ? 'Scramble Academy Spain — Jiu-Jitsu & Grappling | Torremolinos'
+      : 'Scramble Academy Spain — Jiu-Jitsu & Grappling | Torremolinos';
+  }
+
+  // Init from saved preference or browser language
+  const savedLang = localStorage.getItem('sa-lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+  if (savedLang === 'es') setLang('es');
+
   // Mobile day tabs
   document.querySelectorAll('.day-tab').forEach(tab => {
     tab.addEventListener('click', () => {
