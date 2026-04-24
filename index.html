@@ -137,7 +137,24 @@
 
     /* SCHEDULE */
     #schedule{padding:8rem 2.5rem;max-width:1400px;margin:0 auto}
+    @media(max-width:767px){#schedule{padding:4rem 1.25rem}}
     .sched-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--c-border);border-radius:2px}
+    @media(max-width:767px){.sched-scroll{display:none}}
+
+    /* Mobile day-tab schedule */
+    .mobile-sched{display:none}
+    @media(max-width:767px){.mobile-sched{display:block;border:1px solid var(--c-border)}}
+    .day-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--c-elevated);border-bottom:1px solid var(--c-border)}
+    .day-tabs::-webkit-scrollbar{display:none}
+    .day-tab{flex:1;min-width:48px;padding:.85rem .4rem;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--c-muted);background:transparent;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+    .day-tab:hover{color:var(--c-text)}
+    .day-tab.active{color:var(--c-text);border-bottom-color:var(--c-accent)}
+    .day-panel{display:none}
+    .day-panel.active{display:block}
+    .class-row{display:flex;align-items:flex-start;gap:.85rem;padding:.85rem 1rem;border-bottom:1px solid var(--c-border)}
+    .class-row:last-child{border-bottom:none}
+    .class-time{font-size:.6rem;font-weight:700;letter-spacing:.07em;color:var(--c-muted);text-transform:uppercase;white-space:nowrap;min-width:72px;padding-top:.25rem;line-height:1.4}
+    .class-badges{flex:1;display:flex;flex-direction:column;gap:.3rem}
     .sched-table{width:100%;min-width:860px;border-collapse:collapse}
     .sched-table th{background:var(--c-elevated);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--c-text);padding:1.1rem 1rem;text-align:center;border:1px solid var(--c-border)}
     .sched-table th.th-time{text-align:left;width:120px;min-width:120px;font-size:.65rem;color:var(--c-muted);letter-spacing:.12em}
@@ -387,6 +404,62 @@
       </tbody>
     </table>
   </div>
+  <!-- MOBILE SCHEDULE: day-tab view -->
+  <div class="mobile-sched">
+    <div class="day-tabs" role="tablist">
+      <button class="day-tab active" data-day="mon" role="tab">Mon</button>
+      <button class="day-tab" data-day="tue" role="tab">Tue</button>
+      <button class="day-tab" data-day="wed" role="tab">Wed</button>
+      <button class="day-tab" data-day="thu" role="tab">Thu</button>
+      <button class="day-tab" data-day="fri" role="tab">Fri</button>
+      <button class="day-tab" data-day="sat" role="tab">Sat</button>
+    </div>
+    <!-- MON -->
+    <div class="day-panel active" id="dp-mon">
+      <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">NoGi Kids<small>10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+    </div>
+    <!-- TUE -->
+    <div class="day-panel" id="dp-tue">
+      <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma">MMA Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+    </div>
+    <!-- WED -->
+    <div class="day-panel" id="dp-wed">
+      <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi<small>Competition Class</small></span></div></div>
+      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
+    </div>
+    <!-- THU -->
+    <div class="day-panel" id="dp-thu">
+      <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-mma">MMA Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span><span class="badge b-nogi" style="opacity:.65">NoGi Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+    </div>
+    <!-- FRI -->
+    <div class="day-panel" id="dp-fri">
+      <div class="class-row"><div class="class-time">10:00 – 12:00</div><div class="class-badges"><span class="badge b-nogi">NoGi</span></div></div>
+      <div class="class-row"><div class="class-time">16:15 – 17:00</div><div class="class-badges"><span class="badge b-kids">Kids First Steps<small>3–6 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">17:00 – 18:00</div><div class="class-badges"><span class="badge b-kids">Kids Basic<small>7–9 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">18:00 – 19:00</div><div class="class-badges"><span class="badge b-kids">BJJ Kids Advanced<small>10–15 years old</small></span></div></div>
+      <div class="class-row"><div class="class-time">19:00 – 20:00</div><div class="class-badges"><span class="badge b-mma">MMA</span><span class="badge b-bjj">BJJ Beginners</span></div></div>
+      <div class="class-row"><div class="class-time">20:00 – 21:00</div><div class="class-badges"><span class="badge b-bjj">Jiu-Jitsu</span></div></div>
+    </div>
+    <!-- SAT -->
+    <div class="day-panel" id="dp-sat">
+      <div class="class-row"><div class="class-time">10:00 – 11:00</div><div class="class-badges"><span class="badge b-wrestling">Wrestling</span></div></div>
+      <div class="class-row"><div class="class-time">11:00 – 12:00</div><div class="class-badges"><span class="badge b-openmat">Open Mat</span></div></div>
+    </div>
+  </div>
+
   <div class="sched-legend">
     <div class="leg-item"><div class="leg-dot" style="background:rgba(245,240,232,.5)"></div>Jiu-Jitsu</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--c-accent)"></div>NoGi</div>
@@ -534,6 +607,15 @@
   gsap.from('.sched-table tbody tr', {
     scrollTrigger: { trigger: '.sched-scroll', start: 'top 80%', toggleActions: 'play none none none' },
     opacity: 0, x: -18, duration: .5, ease: 'power2.out', stagger: .07
+  });
+  // Mobile day tabs
+  document.querySelectorAll('.day-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('dp-' + tab.dataset.day).classList.add('active');
+    });
   });
 </script>
 </body>
